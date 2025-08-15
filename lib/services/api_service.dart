@@ -4,7 +4,7 @@ import '../models/kategori_model.dart';
 import '../models/transaksi_model.dart';
 
 class ApiService {
-  final String baseUrl = "http://10.0.2.2:8080/api";
+  final String baseUrl = "https://5121fa5db47a.ngrok-free.app/api";
 
   Future<List<Kategori>> getKategori() async {
     final response = await http.get(Uri.parse('$baseUrl/kategori'));
