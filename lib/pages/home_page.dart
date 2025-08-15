@@ -4,7 +4,7 @@ import 'package:mykas_frontend_flutter/pages/add_transaction_page.dart';
 import 'package:mykas_frontend_flutter/pages/kategori_page.dart';
 import 'package:mykas_frontend_flutter/pages/history_page.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:fl_chart/fl_chart.dart'; // Import untuk grafik
+import 'package:fl_chart/fl_chart.dart';
 import '../models/transaksi_model.dart';
 import '../services/api_service.dart';
 
@@ -17,7 +17,6 @@ class _HomePageState extends State<HomePage> {
   late Future<List<Transaksi>> listTransaksi;
   final ApiService apiService = ApiService();
   bool _isBalanceVisible = true;
-  // Daftar warna untuk setiap potongan grafik
   final List<Color> chartColors = [
     Colors.blue,
     Colors.red,
@@ -86,14 +85,13 @@ class _HomePageState extends State<HomePage> {
           double totalPemasukan = 0;
           double totalPengeluaran = 0;
           List<Transaksi> transaksiList = snapshot.data ?? [];
-          Map<String, double> spendingByCategory = {}; // Data untuk grafik
+          Map<String, double> spendingByCategory = {};
 
           for (var trx in transaksiList) {
             if (trx.tipeKategori == 'pemasukan') {
               totalPemasukan += double.parse(trx.jumlah);
             } else {
               totalPengeluaran += double.parse(trx.jumlah);
-              // Mengisi data untuk grafik
               spendingByCategory.update(
                 trx.namaKategori,
                 (value) => value + double.parse(trx.jumlah),
@@ -117,7 +115,6 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
 
-                // Menampilkan grafik jika ada pengeluaran
                 if (totalPengeluaran > 0)
                   _buildPieChart(spendingByCategory, totalPengeluaran),
 
