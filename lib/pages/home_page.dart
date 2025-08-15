@@ -4,7 +4,7 @@ import 'package:mykas_frontend_flutter/pages/add_transaction_page.dart';
 import 'package:mykas_frontend_flutter/pages/kategori_page.dart';
 import 'package:mykas_frontend_flutter/pages/history_page.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:fl_chart/fl_chart.dart'; // Import untuk grafik
+import 'package:fl_chart/fl_chart.dart';
 import '../models/transaksi_model.dart';
 import '../services/api_service.dart';
 
@@ -17,7 +17,6 @@ class _HomePageState extends State<HomePage> {
   late Future<List<Transaksi>> listTransaksi;
   final ApiService apiService = ApiService();
   bool _isBalanceVisible = true;
-  // Daftar warna untuk setiap potongan grafik
   final List<Color> chartColors = [
     Colors.blue,
     Colors.red,
